@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bridgeland NHS · 2025–2026 Service Card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- noise grain overlay -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- decorative star marks scattered behind content -->
+<div class="bg-marks-wrapper" aria-hidden="true">
+  <svg class="bg-mark bg-mark--1" viewBox="0 0 100 100">
+    <path d="M50 0 L61 39 L100 50 L61 61 L50 100 L39 61 L0 50 L39 39 Z" fill="currentColor"/>
+  </svg>
+  <svg class="bg-mark bg-mark--2" viewBox="0 0 100 100">
+    <path d="M50 0 L61 39 L100 50 L61 61 L50 100 L39 61 L0 50 L39 39 Z" fill="currentColor"/>
+  </svg>
+</div>
+
+<header class="masthead">
+  <div class="masthead__row">
+    <div class="masthead__brand">
+      <svg class="masthead__star" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2 L14.7 9.3 L22 12 L14.7 14.7 L12 22 L9.3 14.7 L2 12 L9.3 9.3 Z" fill="currentColor"/>
+      </svg>
+      <span>Bridgeland</span>
+      <span class="masthead__dot">·</span>
+      <span>National Honor Society</span>
+    </div>
+    <div class="masthead__meta">
+      <span class="masthead__year">Vol. XXVI</span>
+      <span class="masthead__dot">·</span>
+      <span class="masthead__year">2025 — 2026</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO / LOOKUP -->
+  <section class="hero" id="hero">
+    <div class="hero__layout">
+      <div class="hero__content">
+        <div class="hero__label">
+          <span class="hero__label-num">01</span>
+          <span class="hero__label-text">The Service Card</span>
+        </div>
+
+        <h1 class="hero__title">
+          <span class="hero__title-line">Service</span>
+          <span class="hero__title-line hero__title-line--accent"><em>Card</em></span>
+          <span class="hero__title-mark">/lookup</span>
+        </h1>
+
+        <p class="hero__lede">
+          Enter your Student ID to pull your current service credits, meeting
+          attendance, strikes, and stole eligibility for the 25–26 school year.
+          Data syncs directly from the NHS officer roster.
+        </p>
+
+        <form class="lookup" id="lookup-form" autocomplete="off">
+          <label class="lookup__label" for="student-id">
+            <span class="lookup__label-num">→</span>
+            Student ID
+          </label>
+          <div class="lookup__row">
+            <input
+              type="text"
+              id="student-id"
+              name="student-id"
+              class="lookup__input"
+              placeholder="S0000000"
+              spellcheck="false"
+              autocapitalize="off"
+            />
+            <button type="submit" class="lookup__btn">
+              <span>Look Up</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="square"/></svg>
+            </button>
+          </div>
+          <p class="lookup__hint">Tip: your Student ID is the same one you use on your school account.</p>
+        </form>
+
+        <!-- error/loading state -->
+        <div class="status" id="status" hidden></div>
+      </div>
+
+      <div class="hero__visual">
+        <!-- Collab logo lockup -->
+        <div class="collab" aria-label="Bridgeland High School × National Honor Society">
+          <div class="collab__logo collab__logo--bhs">
+            <img src="BHSLogo.png" alt="Bridgeland High School" />
+          </div>
+          <div class="collab__x">
+            <svg viewBox="0 0 40 40" aria-hidden="true">
+              <line x1="8" y1="8" x2="32" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <line x1="32" y1="8" x2="8" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="collab__logo collab__logo--nhs">
+            <img src="NHS.png" alt="National Honor Society" />
+          </div>
+          <div class="collab__glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results" id="results" hidden>
+
+    <div class="results__divider">
+      <span>02</span>
+      <span class="results__divider-line"></span>
+      <span>Your Card</span>
+    </div>
+
+    <!-- Name + identity strip -->
+    <header class="profile">
+      <div class="profile__tag">
+        <span>Student</span>
+        <span class="profile__tag-id" id="profile-id">—</span>
+      </div>
+      <h2 class="profile__name" id="profile-name">—</h2>
+      <div class="profile__badges" id="profile-badges"></div>
+    </header>
+
+    <!-- Big stats grid -->
+    <div class="cards">
+
+      <article class="card card--service">
+        <div class="card__top">
+          <span class="card__kicker">Requirement A</span>
+          <span class="card__label">Service Credits</span>
+        </div>
+
+        <div class="card__years">
+          <div class="card__year">
+            <span class="card__year-label">24–25</span>
+            <span class="card__year-val" id="service-2425">—</span>
+          </div>
+          <div class="card__year">
+            <span class="card__year-label">26–27</span>
+            <span class="card__year-val" id="service-2627">—</span>
+          </div>
+        </div>
+
+        <div class="card__progress">
+          <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ring__track" cx="60" cy="60" r="52"/>
+            <circle class="ring__fill" cx="60" cy="60" r="52" id="service-ring" pathLength="100"/>
+          </svg>
+          <div class="card__progress-num">
+            <span id="service-total">0</span>
+            <span class="card__progress-of">of <em id="service-goal">9</em></span>
+          </div>
+        </div>
+        <p class="card__foot" id="service-foot">Juniors–Seniors need 9 · Senior-Only need 3</p>
+      </article>
+
+      <article class="card card--attend">
+        <div class="card__top">
+          <span class="card__kicker">Requirement B</span>
+          <span class="card__label">Meetings Attended</span>
+        </div>
+
+        <div class="card__years">
+          <div class="card__year">
+            <span class="card__year-label">24–25</span>
+            <span class="card__year-val" id="attend-2425">—</span>
+          </div>
+          <div class="card__year">
+            <span class="card__year-label">26–27</span>
+            <span class="card__year-val" id="attend-2627">—</span>
+          </div>
+        </div>
+
+        <div class="card__progress">
+          <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ring__track" cx="60" cy="60" r="52"/>
+            <circle class="ring__fill ring__fill--alt" cx="60" cy="60" r="52" id="attend-ring" pathLength="100"/>
+          </svg>
+          <div class="card__progress-num">
+            <span id="attend-total">0</span>
+            <span class="card__progress-of">of <em id="attend-goal">8</em></span>
+          </div>
+        </div>
+        <p class="card__foot" id="attend-foot">Juniors–Seniors need 8 · Senior-Only need 3</p>
+      </article>
+
+    </div>
+
+    <!-- Secondary stat row -->
+    <div class="mini-stats">
+      <div class="mini">
+        <span class="mini__label">Strikes</span>
+        <span class="mini__val" id="strikes-val">—</span>
+        <span class="mini__note" id="strikes-note"></span>
+      </div>
+      <div class="mini">
+        <span class="mini__label">Permission Slip</span>
+        <span class="mini__val mini__val--text" id="perm-val">—</span>
+      </div>
+      <div class="mini">
+        <span class="mini__label">Stole Eligible</span>
+        <span class="mini__val mini__val--text" id="stole-val">—</span>
+      </div>
+    </div>
+
+    <!-- Caveat -->
+    <p class="caveat" id="senior-warn" hidden>
+      <span>⚠</span> If you are a senior that was inducted with the 26–27 inductees, your progress bar may be inaccurate.
+    </p>
+
+    <!-- Upcoming events sidebar (rendered if available) -->
+    <aside class="events" id="events" hidden>
+      <div class="events__head">
+        <span>03</span>
+        <h3>Upcoming Events</h3>
+      </div>
+      <ul class="events__list" id="events-list"></ul>
+    </aside>
+
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__row">
+    <span>Bridgeland NHS · Service Card Lookup</span>
+    <span class="foot__dot">·</span>
+    <a id="sheet-link" href="https://docs.google.com/spreadsheets/d/170sqCq8Zv_l8ujMF1oRH5xofTErOoQOKtXBwteHxOGY/edit" target="_blank" rel="noopener">Source Sheet</a>
+  </div>
+  <p class="foot__small">Built for the National Honor Society chapter at Bridgeland High School.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
