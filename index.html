@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Bridgeland NHS · 2025–2026 Service Card</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,14 @@
       <span class="masthead__dot">·</span>
       <span>National Honor Society</span>
     </div>
-    <div class="masthead__meta">
+    <button class="masthead__toggle" id="masthead-toggle" aria-label="Toggle info" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="4" y1="6" x2="20" y2="6"/>
+        <line x1="4" y1="12" x2="20" y2="12"/>
+        <line x1="4" y1="18" x2="20" y2="18"/>
+      </svg>
+    </button>
+    <div class="masthead__meta" id="masthead-meta">
       <span class="masthead__year">Vol. XXVI</span>
       <span class="masthead__dot">·</span>
       <span class="masthead__year">2025 — 2026</span>
@@ -241,6 +248,24 @@
   <p class="foot__small">Built for the National Honor Society chapter at Bridgeland High School.</p>
 </footer>
 
+<!-- Firebase Initialization -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAZz5jn9ucphsywIno8Z6JEYAEnQvyO3_U",
+    authDomain: "nhs-website-16705.firebaseapp.com",
+    projectId: "nhs-website-16705",
+    storageBucket: "nhs-website-16705.firebasestorage.app",
+    messagingSenderId: "161169357219",
+    appId: "1:161169357219:web:5528ca8321e03065c1c216",
+    measurementId: "G-8GL5YTM7D9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 <script src="script.js"></script>
 </body>
 </html>

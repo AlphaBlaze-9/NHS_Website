@@ -269,4 +269,21 @@ document.addEventListener("DOMContentLoaded", () => {
     input.value = presetId;
     handleLookup(presetId);
   }
+
+  // Hamburger toggle for mobile masthead
+  const toggle = document.getElementById("masthead-toggle");
+  const meta = document.getElementById("masthead-meta");
+  if (toggle && meta) {
+    toggle.addEventListener("click", () => {
+      const isOpen = meta.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    // Close when tapping outside
+    document.addEventListener("click", (e) => {
+      if (!toggle.contains(e.target) && !meta.contains(e.target)) {
+        meta.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 });
