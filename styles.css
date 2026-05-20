@@ -943,10 +943,31 @@ body {
 @media (max-width: 960px) {
   .hero__layout {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
   .hero__content {
     flex: 1 1 100%;
+    text-align: center;
+  }
+  .hero__title {
+    text-align: center;
+  }
+  .hero__title-line--accent {
+    padding-left: 0;
+  }
+  .hero__title-mark {
+    padding-left: 0;
+  }
+  .hero__lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .lookup {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero__label {
+    justify-content: center;
   }
   .hero__visual {
     flex: 1 1 100%;
@@ -957,6 +978,14 @@ body {
   .collab {
     justify-content: center;
     width: 100%;
+  }
+  .collab__logo {
+    width: clamp(140px, 22vw, 200px);
+    height: clamp(140px, 22vw, 200px);
+  }
+  .collab__x {
+    width: clamp(36px, 5vw, 48px);
+    height: clamp(36px, 5vw, 48px);
   }
 }
 
@@ -1005,14 +1034,15 @@ body {
     padding: clamp(1.8rem, 5vw, 3rem) var(--pad) clamp(2rem, 5vw, 3rem);
   }
   .hero__title {
-    font-size: clamp(3rem, 12vw, 5.5rem);
+    font-size: clamp(3.5rem, 14vw, 6rem);
     margin-bottom: 1.2rem;
+    text-align: center;
   }
   .hero__title-line--accent {
-    padding-left: clamp(1rem, 4vw, 2rem);
+    padding-left: 0;
   }
   .hero__title-mark {
-    padding-left: clamp(1rem, 4vw, 2rem);
+    padding-left: 0;
   }
   .hero__lede {
     font-size: 0.95rem;
@@ -1092,7 +1122,7 @@ body {
 
   /* Hero title */
   .hero__title {
-    font-size: clamp(2.6rem, 11vw, 4rem);
+    font-size: clamp(3rem, 13vw, 4.5rem);
     line-height: 0.92;
   }
   .hero__label {
@@ -1110,15 +1140,15 @@ body {
 
   /* Collab logos */
   .collab__logo {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
     box-shadow:
       0 0 0 2px var(--navy),
       0 4px 16px rgba(12, 31, 71, 0.2);
   }
   .collab__x {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
   }
 
   /* Cards */
@@ -1215,12 +1245,12 @@ body {
     font-size: 0.82rem;
   }
   .collab__logo {
-    width: 72px;
-    height: 72px;
+    width: 100px;
+    height: 100px;
   }
   .collab__x {
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
   }
   .lookup__input {
     font-size: 1rem;
